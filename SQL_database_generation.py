@@ -1,3 +1,4 @@
+from iter_count import count
 from firebase import firebase
 import sqlite3
 
@@ -24,18 +25,18 @@ def import_and_write(conn,c):
 	print("Importing Data From Firebase...")
 	fb = firebase.FirebaseApplication('https://image-db-d8b91.firebaseio.com/')
 	print("Uploading Data To SQL...")
-	for i in range(1,4):
+	for i in range(1,(count)):
 		name = fb.get('/Tech-Tailor/{}'.format(i),'Name')
 		email  = fb.get('/Tech-Tailor/{}'.format(i),'Email')
 		gender = fb.get('/Tech-Tailor/{}'.format(i),'Gender')
 		phone = fb.get('/Tech-Tailor/{}'.format(i),'Phone Number')
-		#c.execute('''INSERT INTO `1` VALUES(?,?,?,?)''',(name,email,gender,phone))
-		#conn.commit()
-		print(name)
-		print(email)
-		print(gender)
-		print(phone)
-	#print("Data Uploaded to SQL Successfully!!")
+		c.execute('''INSERT INTO `1` VALUES(?,?,?,?)''',(name,email,gender,phone))
+		conn.commit()
+		#print(name)
+		#print(email)
+		#print(gender)
+		#print(phone)
+	print("Data Uploaded to SQL Successfully!!")
 
 
 if(__name__=="__main__"):

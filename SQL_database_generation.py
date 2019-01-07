@@ -41,5 +41,13 @@ def import_and_write(conn,c):
 
 if(__name__=="__main__"):
 	
+
+	file = open("count.txt","r")
+	Saved_Count = file.read()
+	Saved_Count = int(Saved_Count)
+	if(Saved_Count == (count-1)):
+		print("same!!")
+	else:
+		print("Not same!!")
 	conn , c = create_sql()	
 	import_and_write(conn,c)

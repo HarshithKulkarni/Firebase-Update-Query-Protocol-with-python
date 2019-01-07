@@ -1,0 +1,15 @@
+from firebase import firebase
+import urllib.request
+def download_file():
+    
+    my_url = "gs://image-db-d8b91.appspot.com"
+
+    try:
+        loader = urllib.request.urlretrieve(my_url, "newdata.data")
+    except urllib.error.URLError as e:
+        message = json.loads(e.read())
+        print(message["error"]["message"])
+    else:
+        print(loader)
+
+download_file()

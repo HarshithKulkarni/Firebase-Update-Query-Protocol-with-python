@@ -16,4 +16,4 @@ db = firebase.database()
 count = 0
 for i in (db.child("Tech-Tailor").get().each()):
     count+=1
-print(count-1)
+

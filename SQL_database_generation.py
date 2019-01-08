@@ -32,22 +32,27 @@ def import_and_write(conn,c):
 		phone = fb.get('/Tech-Tailor/{}'.format(i),'Phone Number')
 		c.execute('''INSERT INTO `1` VALUES(?,?,?,?)''',(name,email,gender,phone))
 		conn.commit()
-		#print(name)
-		#print(email)
-		#print(gender)
-		#print(phone)
+	print("New Database count is being updated!!")
+	new_count_file = open("count.txt","w")
+	new_count = str(count-1)
+	new_count_file.write(new_count)
+	new_count_file.close()
 	print("Data Uploaded to SQL Successfully!!")
 
 
 if(__name__=="__main__"):
 	
 
-	file = open("count.txt","r")
-	Saved_Count = file.read()
+	count_file = open("count.txt","r")
+	Saved_Count = count_file.read()
 	Saved_Count = int(Saved_Count)
+
 	if(Saved_Count == (count-1)):
-		print("same!!")
+		print("The Database is not updated!!")
+		pass
 	else:
-		print("Not same!!")
-	conn , c = create_sql()	
-	import_and_write(conn,c)
+		print("The Database has been updated!!!")
+		print("New Data has started to Update to SQL!!")
+		conn , c = create_sql()	
+		import_and_write(conn,c)
+#print(count-1)

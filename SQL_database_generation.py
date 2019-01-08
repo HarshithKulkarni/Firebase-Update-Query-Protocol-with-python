@@ -10,16 +10,6 @@ gender  = []
 phone = []
 
 
-
-def create_sql():
-	print("SQL Database creating...")
-	conn = sqlite3.connect("Database.db")
-	print("SQL Database Created Successfully!!")
-	c = conn.cursor()
-	c.execute('''CREATE TABLE `1` (`Name`	REAL,`Email`	REAL,`Gender`	REAL,`Phone Number`	REAL)''')
-	return (conn,c)
-
-
 def import_and_write(conn,c):
 
 	print("Importing Data From Firebase...")
@@ -47,12 +37,23 @@ if(__name__=="__main__"):
 	Saved_Count = count_file.read()
 	Saved_Count = int(Saved_Count)
 
+	if(Saved_Count==0):
+		import create_database
+		from create_database import c,conn
+	else:
+		#from create_database import c,conn
+		pass
 	if(Saved_Count == (count-1)):
 		print("The Database is not updated!!")
-		pass
+		#break
 	else:
 		print("The Database has been updated!!!")
 		print("New Data has started to Update to SQL!!")
-		conn , c = create_sql()	
+		
+		"""c_file = open("c_file.txt","r")
+		c = c_file.read()
+
+		conn_file = open("conn_file.txt","r")
+		conn = conn_file.read()"""
+
 		import_and_write(conn,c)
-#print(count-1)

@@ -26,12 +26,12 @@ class sql:
 			self.database_obj.create_db()
 			self.c,self.conn = self.database_obj.create_table()
 		else:
-			self.conn = sqlite3.connect("Database.db")
-			self.c = self.conn.cursor()
-	
+			#self.conn = sqlite3.connect("Database.db")
+			#self.c = self.conn.cursor()
+			pass
 
 	def check_for_database_update(self):
-		self.check_for_database_update()
+		self.check_database_for_zero_entries()
 		if(self.Saved_Count == (self.count)):
 			
 			print("The Database is not updated!!")

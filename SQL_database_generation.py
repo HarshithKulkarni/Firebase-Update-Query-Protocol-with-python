@@ -50,9 +50,9 @@ class sql:
 				self.phone = fb.get('/Tech-Tailor/{}'.format(i),'Phone Number')
 				self.c.execute('''INSERT INTO `1` VALUES(?,?,?,?)''',(self.name,self.email,self.gender,self.phone))
 				self.conn.commit()
-		file = open("count.txt","w")
-		file.write(str(self.Saved_Count))
-		file.close()
+			file = open("count.txt","w")
+			file.write(str(self.count))
+			file.close()
 
 
 
